@@ -34,6 +34,45 @@ namespace OOPAdvanced03
                 Console.WriteLine($"  {item}");
             }
             #endregion
+
+            #region Exercise 2: Leaderboard
+            Console.WriteLine("\n=== Exercise 2: Leaderboard ===");
+
+            SortedList<int, string> leaderboard = new()
+            {
+                { 500, "Ahmed" },
+                { 200, "Sara" },
+                { 800, "Ali" },
+                { 350, "Mona" }
+            };
+
+            Console.WriteLine("Entries (auto-sorted by score):");
+            foreach (var (score, player) in leaderboard)
+            {
+                Console.WriteLine($"  {score} : {player}");
+            }
+
+            Console.WriteLine($"First Key: {leaderboard.Keys[0]}");
+            Console.WriteLine($"First Value: {leaderboard.Values[0]}");
+
+            Console.WriteLine($"Score 500 exists: {leaderboard.ContainsKey(500)}");
+
+            if (leaderboard.TryGetValue(999, out string? player999))
+            {
+                Console.WriteLine($"Player with score 999: {player999}");
+            }
+            else
+            {
+                Console.WriteLine("Player with score 999: Not found");
+            }
+
+            leaderboard.Remove(200);
+            Console.WriteLine("\nUpdated Leaderboard after removing 200:");
+            foreach (var (score, player) in leaderboard)
+            {
+                Console.WriteLine($"  {score} : {player}");
+            }
+            #endregion
         }
     }
 }
