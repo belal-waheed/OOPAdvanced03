@@ -107,6 +107,39 @@ namespace OOPAdvanced03
             Console.WriteLine($"Keys: {string.Join(", ", phoneBook.Keys)}");
             Console.WriteLine($"Values: {string.Join(", ", phoneBook.Values)}");
             #endregion
+
+            #region Exercise 4: Unique Email Validator
+            Console.WriteLine("\n=== Exercise 4: Unique Email Validator ===");
+
+            HashSet<string> emails = new(StringComparer.OrdinalIgnoreCase)
+            {
+                "ahmed@test.com",
+                "AHMED@test.com",
+                "sara@test.com",
+                "Sara@Test.Com"
+            };
+
+            Console.WriteLine($"Stored unique emails count: {emails.Count}");
+            Console.WriteLine($"Emails: [{string.Join(", ", emails)}]");
+
+            HashSet<int> setA = [1, 2, 3, 4, 5];
+            HashSet<int> setB = [4, 5, 6, 7, 8];
+
+            HashSet<int> union = new(setA);
+            union.UnionWith(setB);
+            Console.WriteLine($"Union: [{string.Join(", ", union)}]");
+
+            HashSet<int> intersect = new(setA);
+            intersect.IntersectWith(setB);
+            Console.WriteLine($"Intersect: [{string.Join(", ", intersect)}]");
+
+            HashSet<int> except = new(setA);
+            except.ExceptWith(setB);
+            Console.WriteLine($"Except: [{string.Join(", ", except)}]");
+
+            HashSet<int> subset = [1, 2];
+            Console.WriteLine($"Is {{1, 2}} subset of Set A: {subset.IsSubsetOf(setA)}");
+            #endregion
         }
     }
 }
