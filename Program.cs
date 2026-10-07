@@ -165,6 +165,32 @@ namespace OOPAdvanced03
             bool queueEmptyResult = printQueue.TryDequeue(out string? dequeuedDoc);
             Console.WriteLine($"TryDequeue on empty queue succeeded: {queueEmptyResult} (Value: {dequeuedDoc ?? "null"})");
             #endregion
+
+            #region Exercise 6: Browser History (Undo)
+            Console.WriteLine("\n=== Exercise 6: Browser History (Undo) ===");
+
+            Stack<string> history = new();
+            history.Push("google.com");
+            history.Push("github.com");
+            history.Push("stackoverflow.com");
+            history.Push("youtube.com");
+            history.Push("claude.ai");
+
+            Console.WriteLine($"Current page (Peek): {history.Peek()}");
+
+            Console.WriteLine("Pressing back 3 times:");
+            for (int i = 0; i < 3; i++)
+            {
+                string leftPage = history.Pop();
+                Console.WriteLine($"  Leaving: {leftPage}");
+            }
+
+            Console.WriteLine($"Current page after back: {history.Peek()}");
+
+            history.Clear();
+            bool tryPopResult = history.TryPop(out string? poppedUrl);
+            Console.WriteLine($"TryPop on empty stack succeeded: {tryPopResult} (Value: {poppedUrl ?? "null"})");
+            #endregion
         }
     }
 }
