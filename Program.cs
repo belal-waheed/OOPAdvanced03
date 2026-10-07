@@ -73,6 +73,40 @@ namespace OOPAdvanced03
                 Console.WriteLine($"  {score} : {player}");
             }
             #endregion
+
+            #region Exercise 3: Phone Book
+            Console.WriteLine("\n=== Exercise 3: Phone Book ===");
+
+            Dictionary<string, string> phoneBook = new()
+            {
+                { "Ahmed", "01011112222" },
+                { "Sara", "01033334444" },
+                { "Ali", "01055556666" },
+                { "Mona", "01077778888" }
+            };
+
+            phoneBook["Omar"] = "01099990000";
+
+            try
+            {
+                phoneBook.Add("Ahmed", "01000000000");
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"Add duplicate error caught: {ex.Message}");
+            }
+
+            bool tryAddResult = phoneBook.TryAdd("Ahmed", "01000000000");
+            Console.WriteLine($"TryAdd duplicate succeeded: {tryAddResult}");
+
+            Console.WriteLine($"Contains 'Khaled': {phoneBook.ContainsKey("Khaled")}");
+
+            string contactFallback = phoneBook.GetValueOrDefault("Khaled", "Not Found");
+            Console.WriteLine($"Contact 'Khaled' fallback: {contactFallback}");
+
+            Console.WriteLine($"Keys: {string.Join(", ", phoneBook.Keys)}");
+            Console.WriteLine($"Values: {string.Join(", ", phoneBook.Values)}");
+            #endregion
         }
     }
 }
