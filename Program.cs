@@ -140,6 +140,31 @@ namespace OOPAdvanced03
             HashSet<int> subset = [1, 2];
             Console.WriteLine($"Is {{1, 2}} subset of Set A: {subset.IsSubsetOf(setA)}");
             #endregion
+
+            #region Exercise 5: Print Queue Simulator
+            Console.WriteLine("\n=== Exercise 5: Print Queue Simulator ===");
+
+            Queue<string> printQueue = new();
+            printQueue.Enqueue("Report.pdf");
+            printQueue.Enqueue("Invoice.pdf");
+            printQueue.Enqueue("Letter.docx");
+            printQueue.Enqueue("Resume.pdf");
+            printQueue.Enqueue("Photo.jpg");
+
+            Console.WriteLine($"Queue contents: [{string.Join(", ", printQueue)}]");
+            Console.WriteLine($"Queue count: {printQueue.Count}");
+            Console.WriteLine($"Next document to print (Peek): {printQueue.Peek()}");
+
+            Console.WriteLine("Processing queue:");
+            while (printQueue.Count > 0)
+            {
+                string document = printQueue.Dequeue();
+                Console.WriteLine($"  Printing: {document}");
+            }
+
+            bool queueEmptyResult = printQueue.TryDequeue(out string? dequeuedDoc);
+            Console.WriteLine($"TryDequeue on empty queue succeeded: {queueEmptyResult} (Value: {dequeuedDoc ?? "null"})");
+            #endregion
         }
     }
 }
